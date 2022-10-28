@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ErrorComponent } from './shared/error/error.component';
+
+
 
 const routes: Routes = [
   {
@@ -11,13 +12,10 @@ const routes: Routes = [
     path: 'reactive',
     loadChildren: () => import('./reactive/reactive.module').then(m => m.ReactiveModule)
   },
-  {
-    path: '404',
-    component: ErrorComponent
-  },
+
   {
     path: '**',
-    redirectTo: '404'
+    redirectTo: 'templates'
   }
 ];
 

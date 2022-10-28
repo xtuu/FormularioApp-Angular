@@ -1,17 +1,19 @@
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
 import { SidemenuComponent } from './sidemenu/sidemenu.component';
-import { ErrorComponent } from './error/error.component';
 
 
 
 @NgModule({
   declarations: [
-    SidemenuComponent,
-    ErrorComponent
+    SidemenuComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     SidemenuComponent
