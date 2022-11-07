@@ -26,9 +26,9 @@
         <div class='col-sm-9'>
 
             <div class='input-group'>
-                <input type='text' class='form-control' [ngModel]="persona.nombre " placeholder='Agregar favorito'
-                    name='nombre' required>
-                <button class='btn btn-outline-primary' type='button'>
+                <input type='text' class='form-control' [(ngModel)]='nuevoJuego' placeholder='Agregar favorito'
+                    name='nuevoJuego' (keyup.enter)='agregarJuego()' required>
+                <button class='btn btn-outline-primary' type='button' (click)='agregarJuego()'>
                     Agregar
                 </button>
             </div>
@@ -42,8 +42,14 @@
     <div class='row mb-3'>
         <label class='col-sm-3 col-form-label'>favoritos</label>
         <div class='col-sm-9'>
-            <input *ngFor="let juego of persona.favorito; let i = index" class='form-control mb-1'
-                [(ngModel)]="juego.nombre" name="favorito_{{i}}" required>
+
+            <div class='input-group mb-1' *ngFor='let juego of persona.favorito; let i = index'>
+
+                <input class='form-control ' [(ngModel)]='juego.nombre' name='favorito_{{i}}' required>
+                <button class='btn btn-outline-danger' type='button' (click)='eliminar(i)'>
+                    Eliminar
+                </button>
+            </div>
 
         </div>
     </div>
@@ -69,7 +75,3 @@
 
 <span>Perosna</span>
 <pre>{{persona | json}}</pre>
-
-
-
-
