@@ -1,15 +1,45 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
+
+interface Persona {
+  nombre: string;
+  favorito: Favorito[]
+}
+
+
+interface Favorito {
+  id: number;
+  nombre: string
+}
 
 @Component({
   selector: 'app-dinamicos',
   templateUrl: './dinamicos.component.html',
-  styleUrls: ['./dinamicos.component.css']
 })
-export class DinamicosComponent implements OnInit {
+export class DinamicosComponent {
 
-  constructor() { }
+  @ViewChild('miFormulario') miFormulario!: NgForm
 
-  ngOnInit(): void {
+
+  persona: Persona = {
+    nombre: 'Adrian',
+    favorito: [
+      { id: 1, nombre: 'League of Legends' },
+      { id: 2, nombre: 'Crash' }
+    ]
+  }
+
+
+
+  nombreValido(): boolean {
+    return this.miFormulario?.controls['nombre']?.invalid
+      && this.miFormulario?.controls['nombre']?.touched
+  }
+
+
+  guardar() {
+    console.log('Guardar')
   }
 
 }
