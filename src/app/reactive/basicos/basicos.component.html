@@ -7,15 +7,13 @@
     <div class="col">
 
 
-        <form  autocomplete="off">
+        <form autocomplete="off" [formGroup]="miFormulario">
 
             <!-- Campo de producto -->
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Producto</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" 
-                        placeholder="Nombre del producto">
-
+                    <input type="text" class="form-control" placeholder="Nombre del producto" formControlName="nombre">
                     <span class="form-text text-danger">
                         Debe de ser de 3 letras
                     </span>
@@ -27,8 +25,8 @@
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Producto</label>
                 <div class="col-sm-9">
-                    <input type="number" class="form-control"  
-                        placeholder="Precio del producto" >
+                    <input type="number" class="form-control" placeholder="Precio del producto"
+                        formControlName="precio">
                     <span class="form-text text-danger">
                         EL precio debe de ser 0 o mayor
                     </span>
@@ -40,8 +38,8 @@
             <div class="mb-3 row">
                 <label class="col-sm-3 col-form-label">Producto</label>
                 <div class="col-sm-9">
-                    <input type="number" class="form-control" 
-                        placeholder="Existencias del producto">
+                    <input type="number" class="form-control" placeholder="Existencias del producto"
+                        formControlName="existencias">
                     <!-- <span class="form-text text-danger">Debe de ser de 3 letras</span> -->
                 </div>
             </div>
@@ -49,7 +47,7 @@
 
             <div class="row">
                 <div class="col">
-                    <button type="submit" class="btn btn-primary float-end">
+                    <button type="submit" class="btn btn-primary float-end" [disabled]="miFormulario.invalid">
                         Guardar
                     </button>
                 </div>
@@ -62,7 +60,7 @@
 
 
 
-<!-- <div class="row">
+<div class="row">
     <div class="col">
 
         <span>Valid</span>
@@ -78,4 +76,4 @@
         <pre>{{miFormulario.value | json}}</pre>
 
     </div>
-</div> -->
+</div>
