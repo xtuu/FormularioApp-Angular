@@ -24,7 +24,25 @@ export class RegistroComponent implements OnInit {
     confirPassword: ['', [Validators.required]],
   }, {
     validators: [this.vs.camposIguales('password', 'confirPassword')]
-  })
+  });
+
+
+
+  get emailErrorMsg(): string {
+
+
+    const errors = this.miFormulario.get('email')?.errors
+
+    if (errors?.['required']) {
+      return 'Email es obligatorio';
+    } else if (errors?.['pattern']) {
+      return 'El formato no es valido'
+    } else if (errors?.['emailTomado']) {
+      return 'El correo ya existe'
+    }
+    return '';
+
+  }
 
   constructor(
     private fb: FormBuilder,
@@ -52,22 +70,7 @@ export class RegistroComponent implements OnInit {
   }
 
 
-  emailRequired() {
-    return this.miFormulario.get('email')?.errors?.['required'] 
-    && this.miFormulario.get('email')?.touched
-  }
 
-
-  emailFormato() {
-    return this.miFormulario.get('email')?.errors?.['pattern'] 
-    && this.miFormulario.get('email')?.touched
-  }
-
-
-  emailTomado() {
-    return this.miFormulario.get('email')?.errors?.['emailTomado'] 
-    && this.miFormulario.get('email')?.touched
-  }
 
   submitFormulario() {
     console.log(this.miFormulario.value)
