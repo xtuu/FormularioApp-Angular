@@ -26,9 +26,16 @@
                 <label class="col-sm-3 col-form-label">Email</label>
                 <div class="col-sm-9">
                     <input formControlName="email" type="email" class="form-control" placeholder="Nombre del usuario">
-                    <span class="form-text text-danger" *ngIf="campoNoValido('email')">
+                    <span class="form-text text-danger" *ngIf="emailRequired()">
                         El correo es obligatorio
                     </span>
+                    <span class="form-text text-danger" *ngIf="emailFormato()">
+                        El formato no es valido
+                    </span>
+                    <span class="form-text text-danger" *ngIf="emailTomado()">
+                        El correo ya existe
+                    </span>
+                   
                 </div>
             </div>
 
